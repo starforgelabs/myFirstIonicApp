@@ -7,18 +7,23 @@ module.controller('DashCtrl', function ($ionicPlatform, $cordovaCamera, $scope) 
         $scope.camera = "Button Pressed...";
         $ionicPlatform.ready(function () {
             $scope.camera = "Trying Setup...";
-            var options = {
-                quality: 50,
-                //destinationType: Camera.DestinationType.DATA_URL,
-                //sourceType: Camera.PictureSourceType.CAMERA,
-                allowEdit: true,
-                //encodingType: Camera.EncodingType.JPEG,
-                targetWidth: 100,
-                targetHeight: 100,
-                //popoverOptions: CameraPopoverOptions,
-                saveToPhotoAlbum: false,
-                correctOrientation: true
-            };
+            try {
+                var options = {
+                    quality: 50,
+                    //destinationType: Camera.DestinationType.DATA_URL,
+                    //sourceType: Camera.PictureSourceType.CAMERA,
+                    allowEdit: true,
+                    //encodingType: Camera.EncodingType.JPEG,
+                    targetWidth: 100,
+                    targetHeight: 100,
+                    //popoverOptions: CameraPopoverOptions,
+                    saveToPhotoAlbum: false,
+                    correctOrientation: true
+                };
+            } catch (error) {
+                $scope.camera = "Setup threw an exception: " + error;
+
+            }
 
             $scope.camera = "Calling Camera...";
             $cordovaCamera.getPicture(options).then(function (imageData) {
