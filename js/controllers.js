@@ -28,8 +28,8 @@ module.controller('DashCtrl', function ($ionicPlatform, $cordovaCamera, $scope) 
             $scope.camera = "Calling Camera...";
             $cordovaCamera.getPicture(options).then(function (imageData) {
                 $scope.camera = "Success";
-                //var image = document.getElementById('myImage');
-                //image.src = "data:image/jpeg;base64," + imageData;
+                var image = document.getElementById('cameraTest');
+                image.src = "data:image/jpeg;base64," + imageData;
             }, function (err) {
                 $scope.camera = "Error: " + err;
                 // error
