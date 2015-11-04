@@ -9,13 +9,13 @@ module.controller('DashCtrl', function ($ionicPlatform, $cordovaCamera, $scope) 
             $scope.camera = "Trying Setup...";
             var options = {
                 quality: 50,
-                destinationType: Camera.DestinationType.DATA_URL,
-                sourceType: Camera.PictureSourceType.CAMERA,
+                //destinationType: Camera.DestinationType.DATA_URL,
+                //sourceType: Camera.PictureSourceType.CAMERA,
                 allowEdit: true,
-                encodingType: Camera.EncodingType.JPEG,
+                //encodingType: Camera.EncodingType.JPEG,
                 targetWidth: 100,
                 targetHeight: 100,
-                popoverOptions: CameraPopoverOptions,
+                //popoverOptions: CameraPopoverOptions,
                 saveToPhotoAlbum: false,
                 correctOrientation: true
             };
