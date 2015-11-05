@@ -16,7 +16,7 @@
     <gap:plugin name="org.apache.cordova.battery-status" source="pgb" version="0.2.12" />
     <gap:plugin name="org.apache.cordova.camera" source="pgb" version="0.3.6" />
     <gap:plugin name="org.apache.cordova.vibration" source="pgb" version="0.3.13" />
-    <gap:plugin name="com.phonegap.plugins.barcodescanner" />
+    <gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.2.0" />
 
     <content src="index.html"/>
     <access origin="*"/>
