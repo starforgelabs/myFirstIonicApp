@@ -42,8 +42,12 @@ module.controller('DashCtrl', function ($ionicPlatform, $cordovaCamera, $cordova
 
         $ionicPlatform.ready(function () {
             $scope.bzz = "Calling Bzz...";
-            $cordovaVibration.vibrate(100);
-            $scope.bzz = "Bzz!";
+            try {
+                $cordovaVibration.vibrate(100);
+                $scope.bzz = "Bzz!";
+            } catch (error) {
+                $scope.bzz = "Error: " + error;
+            }
         });
     };
 
@@ -51,16 +55,19 @@ module.controller('DashCtrl', function ($ionicPlatform, $cordovaCamera, $cordova
         $scope.ready = "Ready";
 
         $scope.$on('$cordovaBatteryStatus:status', function (result) {
+            $scope.battery = "Status Called";
             $scope.batteryLevel = result.level;
             $scope.batteryPluggedIn = result.isPlugged ? "Yes" : "No";
         });
 
         $scope.$on('$cordovaBatteryStatus:critical', function (result) {
+            $scope.battery = "Critical Called";
             $scope.batteryLevel = result.level;
             $scope.batteryPluggedIn = result.isPlugged ? "Yes" : "No";
         });
 
         $scope.$on('$cordovaBatteryStatus:low', function (result) {
+            $scope.battery = "Low Called";
             $scope.batteryLevel = result.level;
             $scope.batteryPluggedIn = result.isPlugged ? "Yes" : "No";
         });
