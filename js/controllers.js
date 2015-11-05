@@ -58,16 +58,23 @@ module.controller('DashCtrl', function ($cordovaBarcodeScanner,
     $scope.touchScan = function () {
         $scope.scan = "Button Pressed...";
         $ionicPlatform.ready(function () {
-            $scope.scan = "Calling Camera...";
+            $scope.scan = "Calling Scanner....";
+            var display = false;
             try {
                 $cordovaBarcodeScanner.scan().then(function (data) {
                     $scope.scan = "Success";
                     $scope.scanData = data;
+                    display = true;
                 }, function (err) {
                     $scope.scan = "Error: " + err;
+                    display = true;
                 });
             } catch (error) {
                 $socpe.scan = "Error: " + error;
+                display = true;
+            }
+            if (!display) {
+                $scope.scan = "Display path not touched.";
             }
         });
     };
