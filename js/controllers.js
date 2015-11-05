@@ -1,6 +1,10 @@
 var module = angular.module('starter.controllers', []);
 
-module.controller('DashCtrl', function ($ionicPlatform, $cordovaCamera, $cordovaVibration, $scope) {
+module.controller('DashCtrl', function ($cordovaBarcodeScanner,
+                                        $cordovaCamera,
+                                        $cordovaVibration,
+                                        $ionicPlatform,
+                                        $scope) {
     $scope.ready = "Not ready";
 
     $scope.touchHardware = function () {
@@ -47,6 +51,23 @@ module.controller('DashCtrl', function ($ionicPlatform, $cordovaCamera, $cordova
                 $scope.bzz = "Bzz!";
             } catch (error) {
                 $scope.bzz = "Error: " + error;
+            }
+        });
+    };
+
+    $scope.touchScan = function () {
+        $scope.scan = "Button Pressed...";
+        $ionicPlatform.ready(function () {
+            $scope.scan = "Calling Camera...";
+            try {
+                $cordovaBarcodeScanner.scan().then(function (data) {
+                    $scope.scan = "Success";
+                    $scope.scanData = data;
+                }, function (err) {
+                    $scope.scan = "Error: " + err;
+                });
+            } catch (error) {
+                $socpe.scan = "Error: " + error;
             }
         });
     };

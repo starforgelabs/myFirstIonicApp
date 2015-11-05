@@ -44,6 +44,7 @@
                     <p>
                         Plugged In: {{batteryPluggedIn}}
                     </p>
+
                     <p>
                         Message: {{battery}}
                     </p>
@@ -51,18 +52,19 @@
             </div>
         </div>
         <div class="list card">
-            <div class="item item-divider">Health</div>
+            <div class="item item-divider">Scan Test</div>
             <div class="item item-body">
                 <div>
-                    You ate an apple today!
-                </div>
-            </div>
-        </div>
-        <div class="list card">
-            <div class="item item-divider">Upcoming</div>
-            <div class="item item-body">
-                <div>
-                    You have <b>29</b> meetings on your calendar tomorrow.
+                    <button class="button button-positive" ng-click="touchScan()">
+                        Scan. Beep! Beep!
+                    </button>
+                    <p>
+                        Result: {{scan}}
+                    </p>
+
+                    <p>
+                        Data: {{scanData}}
+                    </p>
                 </div>
             </div>
         </div>
