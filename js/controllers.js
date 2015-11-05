@@ -1,6 +1,6 @@
 var module = angular.module('starter.controllers', []);
 
-module.controller('DashCtrl', function ($ionicPlatform, $cordovaCamera, $scope) {
+module.controller('DashCtrl', function ($ionicPlatform, $cordovaCamera, $cordovaVibration, $scope) {
     $scope.ready = "Not ready";
 
     $scope.touchHardware = function () {
@@ -37,8 +37,33 @@ module.controller('DashCtrl', function ($ionicPlatform, $cordovaCamera, $scope) 
         });
     };
 
+    $scope.touchBzz = function () {
+        $scope.bzz = "Not ready";
+
+        $ionicPlatform.ready(function () {
+            $scope.bzz = "Calling Bzz...";
+            $cordovaVibration.vibrate(100);
+            $scope.bzz = "Bzz!";
+        });
+    };
+
     $ionicPlatform.ready(function () {
         $scope.ready = "Ready";
+
+        $scope.$on('$cordovaBatteryStatus:status', function (result) {
+            $scope.batteryLevel = result.level;
+            $scope.batteryPluggedIn = result.isPlugged ? "Yes" : "No";
+        });
+
+        $scope.$on('$cordovaBatteryStatus:critical', function (result) {
+            $scope.batteryLevel = result.level;
+            $scope.batteryPluggedIn = result.isPlugged ? "Yes" : "No";
+        });
+
+        $scope.$on('$cordovaBatteryStatus:low', function (result) {
+            $scope.batteryLevel = result.level;
+            $scope.batteryPluggedIn = result.isPlugged ? "Yes" : "No";
+        });
     });
 });
 

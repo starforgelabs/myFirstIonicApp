@@ -13,6 +13,8 @@
     </author>
 
     <gap:plugin name="org.apache.cordova.camera" version="0.3.6" />
+    <gap:plugin name="org.apache.cordova.battery-status" />
+    <gap:plugin name="org.apache.cordova.vibration" />
     <preference name="phonegap-version" value="cli-5.2.0" />
 
 
